@@ -4,7 +4,10 @@ import Menu from "./components/Menu/menu";
 import Footer from "./components/Footer/Footer";
 import AdminPage from "./components/Admin/AdminPage";
 import "./App.css";
-
+ 
+// git add .
+// git commit -m "eseml commit"
+// git push
 const App = () => {
   return (
     <Router>
