@@ -4,7 +4,7 @@ import Menu from "./components/Menu/menu";
 import Footer from "./components/Footer/Footer";
 import AdminPage from "./components/Admin/AdminPage";
 import "./App.css";
- 
+// ashdhaioshdoahsd
 // git add .
 // git commit -m "eseml commit"
 // git push
@@ -17,7 +17,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Menu />} />
 
-          <Route path="/admin/*" element={<AdminPage />} />
+          <Route path="/admin" element={<AdminPage />} />
         </Routes>
 
         <Footer />
