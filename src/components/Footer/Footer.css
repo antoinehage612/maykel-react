@@ -1,0 +1,51 @@
+/* Default styles for all screen sizes */
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.icons {
+  font-size: 24px;
+  margin-right: 8px;
+  align-items: center;
+}
+
+.footer a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #ffd700;
+}
+
+@media only screen and (max-width: 600px) {
+  .footer-content {
+    flex-direction: column;
+  }
+
+  .icons {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .footer-content {
+    flex-direction: row;
+  }
+
+  .icons {
+    margin-right: 8px;
+    margin-bottom: 0;
+  }
+}

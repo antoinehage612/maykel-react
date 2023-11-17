@@ -1,0 +1,150 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.restaurant-menu {
+  max-width: 95%;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+  background-color: #f9f6ee;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 1.5em;
+}
+
+.category-buttons {
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #fad02c;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  border-bottom: 3px solid #ddd;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
+  border-radius: 30px;
+}
+
+li:hover {
+  background-color: #f9f6ee;
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  border-radius: 30px;
+}
+
+.item-name {
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 1.2em;
+}
+
+.item-price {
+  color: #777;
+  font-weight: 500;
+}
+
+.ingredients {
+  margin-top: 15px;
+}
+
+.ingredients ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.ingredients li {
+  color: #555;
+  font-size: 0.9em;
+}
+
+.empty-strong,
+.ingredients-strong {
+  margin-bottom: 8px;
+}
+
+.clicked {
+  transform: scale(1.2);
+  background-color: #fad02c;
+  color: black;
+}
+@media only screen and (max-width: 768px) {
+  .restaurant-menu {
+    padding: 15px;
+    width: 90%;
+  }
+
+  li {
+    padding: 15px;
+    border-radius: 20px;
+  }
+
+  .item-name {
+    font-size: 1em;
+  }
+
+  .item-price {
+    font-size: 0.8em;
+  }
+}
+
+/* Smaller screens - Phones */
+@media only screen and (max-width: 576px) {
+  .restaurant-menu {
+    padding: 10px;
+    width: 90%;
+  }
+
+  li {
+    padding: 10px;
+    border-radius: 15px;
+  }
+
+  button {
+    padding: 8px 12px;
+    border-radius: 15px;
+  }
+
+  .item-name {
+    font-size: 0.9em;
+  }
+
+  .item-price {
+    font-size: 0.7em;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .restaurant-menu {
+    width: 90%;
+  }
+}
