@@ -8,15 +8,28 @@ body {
   margin: auto;
   text-align: center;
   padding: 20px;
-  background-color: #f9f6ee;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+  background-color: #c6c6c6;
+
+  /* Gradient Background */
+  animation: gradientAnimation 8s ease infinite alternate; /* Gradient Animation */
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
 h2 {
   color: #333;
   margin-bottom: 15px;
   font-size: 1.5em;
+  transition: color 0.3s ease; /* Title color transition */
 }
 
 .category-buttons {
@@ -24,18 +37,18 @@ h2 {
 }
 
 button {
-  background-color: #333;
-  color: #fff;
+  background-color: #2f2f2f; /* Match gradient start color #fce38a */
+  color: white;
   border: none;
   padding: 10px 15px;
   margin: 5px;
   cursor: pointer;
   border-radius: 20px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
-  background-color: #fad02c;
+  background-color: #fce38a; /* Match gradient end color on hover */
 }
 
 ul {
@@ -44,7 +57,7 @@ ul {
 }
 
 li {
-  border-bottom: 3px solid #ddd;
+  border-bottom: 3px solid #ccc;
   padding: 15px;
   display: flex;
   flex-direction: column;
@@ -52,10 +65,11 @@ li {
   transition: background-color 0.3s ease, transform 0.3s ease,
     box-shadow 0.3s ease;
   border-radius: 30px;
+  background-color: #e2e2e2;
 }
 
 li:hover {
-  background-color: #f9f6ee;
+  background-color: #e2e2e2;
   transform: scale(1.02);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
   border-radius: 30px;
@@ -97,10 +111,12 @@ li:hover {
   background-color: #fad02c;
   color: black;
 }
+
 @media only screen and (max-width: 768px) {
   .restaurant-menu {
     padding: 15px;
     width: 90%;
+    max-width: 100%;
   }
 
   li {
@@ -117,11 +133,11 @@ li:hover {
   }
 }
 
-/* Smaller screens - Phones */
 @media only screen and (max-width: 576px) {
   .restaurant-menu {
     padding: 10px;
-    width: 90%;
+    max-width: 100%;
+    width: 95%;
   }
 
   li {
@@ -142,7 +158,6 @@ li:hover {
     font-size: 0.7em;
   }
 }
-
 @media only screen and (max-width: 1200px) {
   .restaurant-menu {
     width: 90%;
