@@ -37,7 +37,10 @@ const UpdateForm = ({
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`http://localhost:5000/api/menu/${itemId}`, updatedData);
+      await axios.put(
+        `${process.env.REACT_APP_API_URL}/menu/${itemId}`,
+        updatedData
+      );
       onUpdate();
       onRequestClose();
       onGoBack();

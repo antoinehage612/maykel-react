@@ -12,8 +12,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
   background-color: #c6c6c6;
 
-  /* Gradient Background */
-  animation: gradientAnimation 8s ease infinite alternate; /* Gradient Animation */
+  animation: gradientAnimation 8s ease infinite alternate;
 }
 
 @keyframes gradientAnimation {
@@ -29,7 +28,7 @@ h2 {
   color: #333;
   margin-bottom: 15px;
   font-size: 1.5em;
-  transition: color 0.3s ease; /* Title color transition */
+  transition: color 0.3s ease;
 }
 
 .category-buttons {
@@ -37,7 +36,7 @@ h2 {
 }
 
 button {
-  background-color: #2f2f2f; /* Match gradient start color #fce38a */
+  background-color: #2f2f2f;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -48,7 +47,7 @@ button {
 }
 
 button:hover {
-  background-color: #fce38a; /* Match gradient end color on hover */
+  background-color: #fce38a;
 }
 
 ul {
