@@ -5,7 +5,7 @@ import { getMenuItems } from "../Admin/menuSevice";
 const Menu = () => {
   const [menuItems, setMenuItems] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [clickedButton, setClickedButton] = useState("All"); // Set the initial state to "All"
+  const [clickedButton, setClickedButton] = useState("All");
 
   const filterMenuItems = (category) => {
     setSelectedCategory(category);
@@ -93,15 +93,7 @@ const Menu = () => {
           {getFilteredMenuItems().map((item) => (
             <li key={item.id}>
               <span className="item-name">{item.name}</span>
-              <span className="item-price">{item.price}</span>
               <div className="ingredients">
-                {["drinks", "hot-drinks", "arguileh"].includes(
-                  selectedCategory
-                ) ? (
-                  <strong className="empty-strong"></strong>
-                ) : (
-                  <strong className="ingredients-strong">Ingredients</strong>
-                )}
                 {item.ingredients && item.ingredients.length > 0 && (
                   <ul>
                     {item.ingredients.map((ingredient, i) => (
@@ -110,6 +102,7 @@ const Menu = () => {
                   </ul>
                 )}
               </div>
+              <span className="item-price">{item.price}</span>
             </li>
           ))}
         </ul>

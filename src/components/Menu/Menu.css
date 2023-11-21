@@ -81,12 +81,13 @@ li:hover {
 }
 
 .item-price {
-  color: #777;
+  color: #333;
   font-weight: 500;
 }
-
 .ingredients {
-  margin-top: 15px;
+  margin-bottom: 15px;
+  font-style: italic;
+  color: #888;
 }
 
 .ingredients ul {
@@ -98,11 +99,7 @@ li:hover {
 .ingredients li {
   color: #555;
   font-size: 0.9em;
-}
-
-.empty-strong,
-.ingredients-strong {
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 }
 
 .clicked {
