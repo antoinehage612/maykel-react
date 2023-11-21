@@ -6,6 +6,8 @@ const Menu = () => {
   const [menuItems, setMenuItems] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [clickedButton, setClickedButton] = useState("All");
+  const [showFoodDropdown, setShowFoodDropdown] = useState(false);
+  const [showDrinksDropdown, setShowDrinksDropdown] = useState(false);
 
   const filterMenuItems = (category) => {
     setSelectedCategory(category);
@@ -17,6 +19,25 @@ const Menu = () => {
       .then((data) => setMenuItems(data))
       .catch((error) => console.error("Error:", error));
   }, []);
+
+  const toggleFoodDropdown = () => {
+    setShowFoodDropdown(!showFoodDropdown);
+    setShowDrinksDropdown(false); // Close drinks dropdown
+    setClickedButton(clickedButton === "Food" ? "All" : "Food");
+  };
+
+  const toggleDrinksDropdown = () => {
+    setShowDrinksDropdown(!showDrinksDropdown);
+    setShowFoodDropdown(false); // Close food dropdown
+    setClickedButton(clickedButton === "Drinks" ? "All" : "Drinks");
+  };
+
+  const filterShishaItems = () => {
+    filterMenuItems("arguileh");
+    setShowFoodDropdown(false); // Close food dropdown
+    setShowDrinksDropdown(false); // Close drinks dropdown
+    setClickedButton("Shisha");
+  };
 
   const getFilteredMenuItems = () => {
     const filteredItems =
@@ -44,50 +65,111 @@ const Menu = () => {
   return (
     <div className="restaurant-menu">
       <h2>Menu</h2>
-      <div className="category-buttons">
+      <div className="main-buttons">
         <button
-          onClick={() => filterMenuItems("All")}
-          className={clickedButton === "All" ? "clicked" : ""}
+          onClick={() => {
+            filterMenuItems("All");
+            setShowFoodDropdown(false);
+            setShowDrinksDropdown(false);
+          }}
+          className={
+            clickedButton === "All" ? "clicked main-button" : "main-button"
+          }
         >
           All
         </button>
         <button
-          onClick={() => filterMenuItems("sandwiches")}
-          className={clickedButton === "sandwiches" ? "clicked" : ""}
+          onClick={toggleFoodDropdown}
+          className={showFoodDropdown ? "clicked main-button" : "main-button"}
         >
-          Sandwiches
+          Food
         </button>
         <button
-          onClick={() => filterMenuItems("burgers")}
-          className={clickedButton === "burgers" ? "clicked" : ""}
-        >
-          Burgers
-        </button>
-        <button
-          onClick={() => filterMenuItems("mashawi")}
-          className={clickedButton === "mashawi" ? "clicked" : ""}
-        >
-          Mashawi
-        </button>
-        <button
-          onClick={() => filterMenuItems("drinks")}
-          className={clickedButton === "drinks" ? "clicked" : ""}
+          onClick={toggleDrinksDropdown}
+          className={showDrinksDropdown ? "clicked main-button" : "main-button"}
         >
           Drinks
         </button>
         <button
-          onClick={() => filterMenuItems("hot-drinks")}
-          className={clickedButton === "hot-drinks" ? "clicked" : ""}
+          onClick={() => {
+            filterShishaItems();
+            setShowFoodDropdown(false);
+            setShowDrinksDropdown(false);
+          }}
+          className={
+            clickedButton === "Shisha" ? "clicked main-button" : "main-button"
+          }
         >
-          Hot Drinks
-        </button>
-        <button
-          onClick={() => filterMenuItems("arguileh")}
-          className={clickedButton === "arguileh" ? "clicked" : ""}
-        >
-          Arguileh
+          Shisha
         </button>
       </div>
+      {showFoodDropdown && (
+        <div className="sub-buttons food-dropdown-content">
+          <button
+            onClick={() => {
+              filterMenuItems("sandwiches");
+              setClickedButton("sandwiches");
+            }}
+            className={
+              clickedButton === "sandwiches"
+                ? "clicked sub-button"
+                : "sub-button"
+            }
+          >
+            Sandwiches
+          </button>
+          <button
+            onClick={() => {
+              filterMenuItems("burgers");
+              setClickedButton("burgers");
+            }}
+            className={
+              clickedButton === "burgers" ? "clicked sub-button" : "sub-button"
+            }
+          >
+            Burgers
+          </button>
+          <button
+            onClick={() => {
+              filterMenuItems("mashawi");
+              setClickedButton("mashawi");
+            }}
+            className={
+              clickedButton === "mashawi" ? "clicked sub-button" : "sub-button"
+            }
+          >
+            Mashawi
+          </button>
+        </div>
+      )}
+      {showDrinksDropdown && (
+        <div className="sub-buttons drinks-dropdown-content">
+          <button
+            onClick={() => {
+              filterMenuItems("drinks");
+              setClickedButton("drinks");
+            }}
+            className={
+              clickedButton === "drinks" ? "clicked sub-button" : "sub-button"
+            }
+          >
+            Drinks
+          </button>
+          <button
+            onClick={() => {
+              filterMenuItems("hot-drinks");
+              setClickedButton("hot-drinks");
+            }}
+            className={
+              clickedButton === "hot-drinks"
+                ? "clicked sub-button"
+                : "sub-button"
+            }
+          >
+            Hot Drinks
+          </button>
+        </div>
+      )}
       <div className="items">
         <ul>
           {getFilteredMenuItems().map((item) => (

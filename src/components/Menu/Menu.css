@@ -11,7 +11,6 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
   background-color: #c6c6c6;
-
   animation: gradientAnimation 8s ease infinite alternate;
 }
 
@@ -35,20 +34,51 @@ h2 {
   margin-bottom: 20px;
 }
 
-button {
+/* Existing styles... */
+
+.main-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.main-button {
   background-color: #2f2f2f;
   color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 20px 25px; /* Increased padding for larger buttons */
   margin: 5px;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 10px; /* Adjusted border-radius */
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-button:hover {
+.main-button:hover {
   background-color: #fce38a;
 }
+
+.sub-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.sub-button {
+  background-color: #2f2f2f;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 15px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.sub-button:hover {
+  background-color: #fce38a;
+}
+
+/* Existing styles... */
 
 ul {
   list-style: none;
@@ -84,6 +114,7 @@ li:hover {
   color: #333;
   font-weight: 500;
 }
+
 .ingredients {
   margin-bottom: 15px;
   font-style: italic;
@@ -141,7 +172,12 @@ li:hover {
     border-radius: 15px;
   }
 
-  button {
+  .main-button {
+    padding: 10px 15px;
+    border-radius: 20px;
+  }
+
+  .sub-button {
     padding: 8px 12px;
     border-radius: 15px;
   }
@@ -154,6 +190,7 @@ li:hover {
     font-size: 0.7em;
   }
 }
+
 @media only screen and (max-width: 1200px) {
   .restaurant-menu {
     width: 90%;
