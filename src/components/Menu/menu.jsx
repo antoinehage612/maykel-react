@@ -25,7 +25,7 @@ const Menu = () => {
         : menuItems.filter((item) => item.category === selectedCategory);
 
     const orderedCategories = [
-      "food",
+      "sandwiches",
       "burgers",
       "mashawi",
       "drinks",
@@ -52,10 +52,10 @@ const Menu = () => {
           All
         </button>
         <button
-          onClick={() => filterMenuItems("food")}
-          className={clickedButton === "food" ? "clicked" : ""}
+          onClick={() => filterMenuItems("sandwiches")}
+          className={clickedButton === "sandwiches" ? "clicked" : ""}
         >
-          Food
+          Sandwiches
         </button>
         <button
           onClick={() => filterMenuItems("burgers")}
