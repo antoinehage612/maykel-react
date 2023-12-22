@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-contact">
           <AiOutlinePhone className="icons" />
-          <p>+961 79/117 200 </p>
+          <p>+961 79/131 265 </p>
         </div>
         <div className="footer-social">
           <a
