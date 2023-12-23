@@ -1,8 +1,6 @@
-// AdminPage.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import UpdateForm from "./UpdateForm";
-import DeleteConfirmationModal from "./DeleteConfirmationModal";
 import Modal from "react-modal";
 import "./AdminPage.css";
 
@@ -18,8 +16,6 @@ const AdminPage = () => {
   });
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState(null);
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [deleteItemId, setDeleteItemId] = useState(null);
 
   const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -33,6 +29,15 @@ const AdminPage = () => {
   };
 
   useEffect(() => {
+    const fetchMenuItems = async () => {
+      try {
+        const response = await axios.get(`${apiUrl}/menu`);
+        setMenuItems(response.data);
+      } catch (error) {
+        console.error("Error fetching menu items:", error);
+      }
+    };
+
     fetchMenuItems();
   }, [apiUrl]);
 
@@ -72,20 +77,8 @@ const AdminPage = () => {
     handleUpdateModalClose();
   };
 
-  const handleDeleteClick = (id) => {
-    setDeleteItemId(id);
-    setShowDeleteModal(true);
-  };
-
-  const handleConfirmDelete = async () => {
-    await handleDelete(deleteItemId);
-    setShowDeleteModal(false);
-    setDeleteItemId(null);
-  };
-
-  const handleCancelDelete = () => {
-    setShowDeleteModal(false);
-    setDeleteItemId(null);
+  const handleGoBack = () => {
+    console.log("Navigating back to Admin Page");
   };
 
   const handleDelete = async (id) => {
@@ -100,14 +93,14 @@ const AdminPage = () => {
   return (
     <div className="admin-page">
       <h2 className="admin-title">Admin Page</h2>
+
       <h1 to="/admin/add" className="admin-link">
         Add New Item
       </h1>
-       {" "}
+
       <form onSubmit={handleSubmit} className="admin-form">
-               {" "}
         <label>
-                    Name:          {" "}
+          Name:
           <input
             type="text"
             name="name"
@@ -115,11 +108,9 @@ const AdminPage = () => {
             onChange={handleInputChange}
             className="admin-input"
           />
-                 {" "}
         </label>
-               {" "}
         <label>
-                    Price:          {" "}
+          Price:
           <input
             type="text"
             name="price"
@@ -127,11 +118,9 @@ const AdminPage = () => {
             onChange={handleInputChange}
             className="admin-input"
           />
-                 {" "}
         </label>
-               {" "}
         <label>
-                    Ingredients:          {" "}
+          Ingredients:
           <input
             type="text"
             name="ingredients"
@@ -139,11 +128,9 @@ const AdminPage = () => {
             onChange={handleInputChange}
             className="admin-input"
           />
-                 {" "}
         </label>
-               {" "}
         <label>
-                    Category:          {" "}
+          Category:
           <input
             type="text"
             name="category"
@@ -151,13 +138,10 @@ const AdminPage = () => {
             onChange={handleInputChange}
             className="admin-input"
           />
-                 {" "}
         </label>
-               {" "}
         <button type="submit" className="admin-button">
-                    Add Item        {" "}
+          Add Item
         </button>
-             {" "}
       </form>
       <h3 className="menu-items-title">Menu Items</h3>
       <ul className="menu-items-list">
@@ -171,7 +155,7 @@ const AdminPage = () => {
               Update
             </button>
             <button
-              onClick={() => handleDeleteClick(item._id)}
+              onClick={() => handleDelete(item._id)}
               className="delete-button"
             >
               Delete
@@ -179,25 +163,19 @@ const AdminPage = () => {
           </li>
         ))}
       </ul>
-      <DeleteConfirmationModal
-        isOpen={showDeleteModal}
-        onConfirm={handleConfirmDelete}
-        onCancel={handleCancelDelete}
+      <UpdateForm
+        isOpen={showUpdateModal}
+        onRequestClose={handleUpdateModalClose}
+        itemId={selectedItemId}
+        onUpdate={handleUpdateFormUpdate}
+        onGoBack={handleGoBack}
+        initialData={{
+          name: formData.name,
+          price: formData.price,
+          ingredients: formData.ingredients,
+          category: formData.category,
+        }}
       />
-      {showUpdateModal && (
-        <UpdateForm
-          isOpen={showUpdateModal}
-          onRequestClose={handleUpdateModalClose}
-          itemId={selectedItemId}
-          onUpdate={handleUpdateFormUpdate}
-          initialData={{
-            name: formData.name,
-            price: formData.price,
-            ingredients: formData.ingredients,
-            category: formData.category,
-          }}
-        />
-      )}
     </div>
   );
 };

@@ -1,9 +1,6 @@
-/* Updated Professional Update Form Styles for Top Placement */
-
-/* Base Modal Styles */
 .update-modal {
   position: absolute;
-  top: 20px; /* Adjust this value as needed */
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
   background-color: #f7f7f7;
