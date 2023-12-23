@@ -25,10 +25,10 @@ const Menu = () => {
         : menuItems.filter((item) => item.category === selectedCategory);
 
     const orderedCategories = [
-      "mashawi",
-      "platters",
       "sandwiches",
       "burgers",
+      "platters",
+      "mashawi",
       "drinks",
       "arguileh",
     ];
@@ -52,18 +52,6 @@ const Menu = () => {
           All
         </button>
         <button
-          onClick={() => filterMenuItems("mashawi")}
-          className={clickedButton === "mashawi" ? "clicked" : ""}
-        >
-          Mashawi
-        </button>
-        <button
-          onClick={() => filterMenuItems("platters")}
-          className={clickedButton === "platters" ? "clicked" : ""}
-        >
-          Platters
-        </button>
-        <button
           onClick={() => filterMenuItems("sandwiches")}
           className={clickedButton === "sandwiches" ? "clicked" : ""}
         >
@@ -74,6 +62,18 @@ const Menu = () => {
           className={clickedButton === "burgers" ? "clicked" : ""}
         >
           Burgers
+        </button>
+        <button
+          onClick={() => filterMenuItems("platters")}
+          className={clickedButton === "platters" ? "clicked" : ""}
+        >
+          Platters
+        </button>
+        <button
+          onClick={() => filterMenuItems("mashawi")}
+          className={clickedButton === "mashawi" ? "clicked" : ""}
+        >
+          Mashawi
         </button>
 
         <button
