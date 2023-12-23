@@ -13,7 +13,7 @@ const Footer = () => {
         </div>
         <div className="footer-social">
           <a
-            href="https://www.instagram.com/961_resto_cafe/"
+            href="https://www.instagram.com/3al_7atab_cafe/"
             target="_blank"
             rel="noopener noreferrer"
           >
